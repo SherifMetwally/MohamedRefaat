@@ -7,7 +7,14 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { getProjectBySlug } from '@/lib/projects';
+import { getProjectBySlug, projects } from '@/lib/projects';
+
+// Generate static params for static export
+export function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
 
 export default function ProjectPage() {
   const params = useParams();
