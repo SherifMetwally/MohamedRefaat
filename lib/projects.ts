@@ -112,6 +112,11 @@ export const projects: Project[] = [
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find(project => project.slug === slug);
+  // Normalize the slug: trim, lowercase, remove trailing slash
+  const normalizedSlug = slug.trim().toLowerCase().replace(/\/$/, '');
+  return projects.find(project => 
+    project.slug.toLowerCase() === normalizedSlug ||
+    project.id.toLowerCase() === normalizedSlug
+  );
 }
 

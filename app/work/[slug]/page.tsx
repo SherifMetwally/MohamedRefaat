@@ -16,8 +16,19 @@ interface PageProps {
 }
 
 export default function ProjectPage({ params }: PageProps) {
-  const { slug } = params;
+  let { slug } = params;
+  
+  // Normalize slug: remove trailing slash if present
+  slug = slug.replace(/\/$/, '');
+  
   const project = getProjectBySlug(slug);
+  
+  // Debug: Log the slug and available projects (only in development)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Looking for slug:', slug);
+    console.log('Available slugs:', projects.map(p => p.slug));
+    console.log('Project found:', project ? project.title : 'NOT FOUND');
+  }
 
   if (!project) {
     return (
