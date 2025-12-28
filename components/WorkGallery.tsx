@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { projects } from '@/lib/projects';
+import { getImagePath } from '@/lib/paths';
 
 export default function WorkGallery() {
   const [ref, inView] = useInView({
@@ -150,7 +151,7 @@ export default function WorkGallery() {
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             if (!target.src.includes('hero-image')) {
-                              target.src = '/images/hero-image.jpg';
+                              target.src = getImagePath('/images/hero-image.jpg');
                             }
                           }}
                         />

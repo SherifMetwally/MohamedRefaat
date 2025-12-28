@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { Project } from '@/lib/projects';
+import { getImagePath } from '@/lib/paths';
 
 interface ProjectClientProps {
   project: Project;
@@ -130,7 +131,7 @@ export default function ProjectClient({ project }: ProjectClientProps) {
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   if (!target.src.includes('hero-image')) {
-                    target.src = '/images/hero-image.jpg';
+                    target.src = getImagePath('/images/hero-image.jpg');
                   }
                 }}
               />

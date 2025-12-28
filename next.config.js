@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/MohamedRefaat',
+  assetPrefix: '/MohamedRefaat',
   trailingSlash: true,
   images: {
     remotePatterns: [
