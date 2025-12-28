@@ -29,6 +29,19 @@ export default function WorkGallery() {
     setCurrentImageIndices(initialIndices);
   }, []);
 
+  // Preload all project images when component comes into view
+  useEffect(() => {
+    if (!inView) return;
+
+    // Preload all images for all projects
+    projects.forEach((project) => {
+      project.images.forEach((imageSrc) => {
+        const img = new window.Image();
+        img.src = getImagePath(imageSrc);
+      });
+    });
+  }, [inView]);
+
   // Set up intervals for hovered projects to cycle through images
   useEffect(() => {
     if (!inView || hoveredProjects.size === 0) return;
@@ -78,6 +91,15 @@ export default function WorkGallery() {
   // Handle hover start
   const handleMouseEnter = (projectId: string) => {
     setHoveredProjects((prev) => new Set(prev).add(projectId));
+    
+    // Preload all images for this project when hover starts (as backup)
+    const project = projects.find((p) => p.id === projectId);
+    if (project) {
+      project.images.forEach((imageSrc) => {
+        const img = new window.Image();
+        img.src = getImagePath(imageSrc);
+      });
+    }
   };
 
   // Handle hover end - reset to first image
@@ -148,6 +170,8 @@ export default function WorkGallery() {
                           alt={`${project.title} - Image ${currentIndex + 1}`}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          priority={currentIndex === 0}
+                          loading={currentIndex === 0 ? 'eager' : 'eager'}
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             if (!target.src.includes('hero-image')) {
