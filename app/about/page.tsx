@@ -3,10 +3,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
-import Image from 'next/image';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '@/lib/animations';
 import AboutSection from '@/components/AboutSection';
-import { getImagePath } from '@/lib/paths';
 
 const processSteps = [
   {
@@ -101,17 +99,6 @@ export default function AboutPage() {
                   whileHover={{ scale: 1.02, y: -5 }}
                   className="border border-gray-800 rounded-lg bg-gray-900/30 hover:bg-gray-900/50 hover:border-gray-700 transition-all duration-300 overflow-hidden group"
                 >
-                  {/* Image */}
-                  <div className="relative w-full h-64 overflow-hidden">
-                    <Image
-                      src={getImagePath(step.image)}
-                      alt={step.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  </div>
-                  
                   {/* Content */}
                   <div className="p-8">
                     <h3 className="text-2xl font-bold text-white mb-3">

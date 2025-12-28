@@ -105,36 +105,40 @@ export default function ProjectClient({ project }: ProjectClientProps) {
           {project.title}
         </motion.h1>
 
-        {/* Project Images Grid */}
+        {/* Project Images - Stacked with original aspect ratios */}
         <motion.div
           ref={ref}
           variants={staggerContainer}
           initial="initial"
           animate={inView ? 'animate' : 'initial'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="space-y-6 flex flex-col items-center"
         >
           {project.images.map((imageSrc, imageIndex) => (
             <motion.div
               key={imageIndex}
               variants={fadeInUp}
-              whileHover={{ scale: 1.02, y: -5 }}
+              whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
               onClick={() => openLightbox(imageIndex)}
-              className="relative aspect-square overflow-hidden rounded-lg border border-gray-800 group cursor-pointer bg-gray-900"
+              className="relative w-full max-w-4xl overflow-hidden rounded-lg border border-gray-800 group cursor-pointer bg-gray-900"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-              <Image
-                src={getImagePath(imageSrc)}
-                alt={`${project.title} - Image ${imageIndex + 1}`}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.src.includes('hero-image')) {
-                    target.src = getImagePath('/images/hero-image.jpg');
-                  }
-                }}
-              />
+              <div className="relative w-full">
+                <Image
+                  src={getImagePath(imageSrc)}
+                  alt={`${project.title} - Image ${imageIndex + 1}`}
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto object-contain group-hover:opacity-90 transition-opacity duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.includes('hero-image')) {
+                      target.src = getImagePath('/images/hero-image.jpg');
+                    }
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none" />
+              </div>
             </motion.div>
           ))}
         </motion.div>

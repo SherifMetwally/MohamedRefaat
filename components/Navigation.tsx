@@ -44,12 +44,12 @@ export default function Navigation() {
               className="relative flex items-center"
             >
               {/* Main Logo */}
-              <div className="relative h-8 sm:h-10 md:h-12">
+              <div className="relative h-12 sm:h-14 md:h-16 lg:h-20">
                 <Image
                   src={getImagePath('/images/logo.avif')}
                   alt="Mohamed Refaat Designs - Interior Design & Architecture"
-                  width={200}
-                  height={48}
+                  width={300}
+                  height={80}
                   className="object-contain h-full"
                   priority
                 />

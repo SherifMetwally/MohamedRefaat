@@ -46,7 +46,7 @@ export default function ClientsCarousel() {
               {duplicatedClients.map((client, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 mx-12 text-4xl sm:text-5xl md:text-6xl font-bold text-white whitespace-nowrap"
+                  className="flex-shrink-0 mx-4 sm:mx-8 md:mx-12 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white whitespace-nowrap"
                 >
                   {client}
                 </div>

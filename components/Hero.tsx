@@ -117,10 +117,10 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
                 className="absolute inset-0 flex items-center justify-start"
-                style={{ zIndex: 1, pointerEvents: 'none', left: '-100%' }}
+                style={{ zIndex: 1, pointerEvents: 'none', left: '-150%' }}
               >
                 <div className="relative w-full h-full flex items-center justify-center">
-                  <div className="relative" style={{ width: '120%', height: '150%' }}>
+                  <div className="relative" style={{ width: '90%', height: '110%' }}>
                     <Image
                       src={getImagePath('/images/logo emblem.avif')}
                       alt="MRD Logo Emblem"

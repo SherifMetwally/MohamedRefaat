@@ -26,13 +26,13 @@ export default function AboutSection({ showKnowMoreButton = true }: AboutSection
   return (
     <section ref={ref} className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Animated Pattern Background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(45deg, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(-45deg, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(45deg, transparent 1px, rgba(255,255,255,0.05) 1px),
-            linear-gradient(-45deg, transparent 1px, rgba(255,255,255,0.05) 1px)
+            linear-gradient(45deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(-45deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(45deg, transparent 1px, rgba(255,255,255,0.02) 1px),
+            linear-gradient(-45deg, transparent 1px, rgba(255,255,255,0.02) 1px)
           `,
           backgroundSize: '60px 60px',
           backgroundPosition: '0 0, 0 0, 30px 30px, 30px 30px'
@@ -50,8 +50,8 @@ export default function AboutSection({ showKnowMoreButton = true }: AboutSection
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 1px, transparent 1px),
-              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 1px, transparent 1px)
+              radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 1px, transparent 1px),
+              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 1px, transparent 1px)
             `,
             backgroundSize: '100px 100px, 150px 150px',
           }}
@@ -120,21 +120,21 @@ export default function AboutSection({ showKnowMoreButton = true }: AboutSection
 
               {/* Know More Button - Only show on home page */}
               {showKnowMoreButton && (
-                <motion.div
-                  variants={fadeInUp}
-                  transition={{ delay: 0.4 }}
-                  className="mt-8"
-                >
-                  <Link href="/about">
-                    <motion.button
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                      Know More
-                    </motion.button>
-                  </Link>
-                </motion.div>
+              <motion.div
+                variants={fadeInUp}
+                transition={{ delay: 0.4 }}
+                className="mt-8"
+              >
+                <Link href="/about">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    Know More
+                  </motion.button>
+                </Link>
+              </motion.div>
               )}
 
               {/* Social Link with enhanced styling */}
