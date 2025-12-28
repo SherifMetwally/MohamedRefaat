@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getProjectBySlug, projects } from '@/lib/projects';
 import ProjectClient from './ProjectClient';
+import ProjectPageClient from './ProjectPageClient';
 
 // Generate static params for static export
 export function generateStaticParams() {
@@ -21,80 +22,8 @@ interface PageProps {
 }
 
 export default function ProjectPage({ params }: PageProps) {
-  try {
-    // Ensure params and slug exist
-    if (!params?.slug) {
-      return (
-        <div className="pt-20 min-h-screen flex items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="text-4xl font-bold text-white mb-4">Invalid Project</h1>
-            <p className="text-gray-400 mb-8">Invalid project parameter.</p>
-            <Link
-              href="/work"
-              className="inline-block px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              Back to Projects
-            </Link>
-          </div>
-        </div>
-      );
-    }
-
-    let slug = String(params.slug).replace(/\/$/, '').trim();
-    
-    if (!slug) {
-      return (
-        <div className="pt-20 min-h-screen flex items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
-            <p className="text-gray-400 mb-8">No project slug provided.</p>
-            <Link
-              href="/work"
-              className="inline-block px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              Back to Projects
-            </Link>
-          </div>
-        </div>
-      );
-    }
-    
-    const project = getProjectBySlug(slug);
-
-    if (!project) {
-      return (
-        <div className="pt-20 min-h-screen flex items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
-            <p className="text-gray-400 mb-8">The project you're looking for doesn't exist.</p>
-            <Link
-              href="/work"
-              className="inline-block px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              Back to Projects
-            </Link>
-          </div>
-        </div>
-      );
-    }
-
-    return <ProjectClient project={project} />;
-  } catch (error) {
-    console.error('Error rendering project page:', error);
-    return (
-      <div className="pt-20 min-h-screen flex items-center justify-center">
-        <div className="text-center px-4">
-          <h1 className="text-4xl font-bold text-white mb-4">Error</h1>
-          <p className="text-gray-400 mb-8">An error occurred while loading the project.</p>
-          <Link
-            href="/work"
-            className="inline-block px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
-          >
-            Back to Projects
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  // For static export, params might not be available at runtime
+  // Use client-side component to extract slug from URL
+  return <ProjectPageClient serverParams={params} />;
 }
 
