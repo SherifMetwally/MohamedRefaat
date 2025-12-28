@@ -4,6 +4,7 @@ import ServicesSection from '@/components/ServicesSection';
 import ClientsCarousel from '@/components/ClientsCarousel';
 import WorkGallery from '@/components/WorkGallery';
 import WhyChooseUs from '@/components/WhyChooseUs';
+import StatsCounter from '@/components/StatsCounter';
 import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <ClientsCarousel />
+      <StatsCounter />
       <WorkGallery />
       <WhyChooseUs />
       <ContactSection />
