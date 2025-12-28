@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isProduction = process.env.NODE_ENV === 'production';
+const basePath = isProduction ? '/MohamedRefaat' : '';
+
 const nextConfig = {
   output: 'export',
-  basePath: '/MohamedRefaat',
-  assetPrefix: '/MohamedRefaat',
+  ...(basePath && { basePath }),
+  ...(basePath && { assetPrefix: basePath }),
   trailingSlash: true,
   images: {
     remotePatterns: [

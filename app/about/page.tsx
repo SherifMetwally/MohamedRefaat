@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '@/lib/animations';
 import AboutSection from '@/components/AboutSection';
+import { getImagePath } from '@/lib/paths';
 
 const processSteps = [
   {
@@ -103,7 +104,7 @@ export default function AboutPage() {
                   {/* Image */}
                   <div className="relative w-full h-64 overflow-hidden">
                     <Image
-                      src={step.image}
+                      src={getImagePath(step.image)}
                       alt={step.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

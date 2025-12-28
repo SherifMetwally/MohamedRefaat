@@ -124,7 +124,7 @@ export default function ProjectClient({ project }: ProjectClientProps) {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
               <Image
-                src={imageSrc}
+                src={getImagePath(imageSrc)}
                 alt={`${project.title} - Image ${imageIndex + 1}`}
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -254,7 +254,7 @@ export default function ProjectClient({ project }: ProjectClientProps) {
                   className="relative max-w-7xl max-h-[85vh] flex items-center justify-center pointer-events-auto"
                 >
                   <Image
-                    src={project.images[selectedImageIndex]}
+                    src={getImagePath(project.images[selectedImageIndex])}
                     alt={`${project.title} - Image ${selectedImageIndex + 1}`}
                     width={1920}
                     height={1080}

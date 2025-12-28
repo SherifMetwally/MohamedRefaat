@@ -114,7 +114,7 @@ export default function WorkGallery() {
         >
           {projects.map((project, projectIndex) => {
             const currentIndex = currentImageIndices[project.id] || 0;
-            const currentImage = project.images[currentIndex] || project.thumbnail;
+            const currentImage = getImagePath(project.images[currentIndex] || project.thumbnail);
 
             return (
               <Link

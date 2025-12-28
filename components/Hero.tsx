@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { fadeInUp, fadeIn, staggerContainer } from '@/lib/animations';
+import { getImagePath } from '@/lib/paths';
 
 const services = ['Interior', 'Exterior', 'Architecture', 'Services'];
 
@@ -121,7 +122,7 @@ export default function Hero() {
                 <div className="relative w-full h-full flex items-center justify-center">
                   <div className="relative" style={{ width: '120%', height: '150%' }}>
                     <Image
-                      src="/images/logo emblem.avif"
+                      src={getImagePath('/images/logo emblem.avif')}
                       alt="MRD Logo Emblem"
                       fill
                       className="object-contain"
@@ -154,7 +155,7 @@ export default function Hero() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-800/30 to-transparent z-10 pointer-events-none" />
                 <Image
-                  src="/images/hero-image.jpg"
+                  src={getImagePath('/images/hero-image.jpg')}
                   alt="Eng. Mohamed Refaat - Architect and Interior Designer"
                   fill
                   className="object-cover transition-transform duration-700"

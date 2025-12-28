@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '@/lib/animations';
+import { getImagePath } from '@/lib/paths';
 
 const services = [
   {
@@ -100,7 +101,7 @@ export default function ServicesPage() {
                   {/* Service Image */}
                   <div className="relative w-full h-64 overflow-hidden">
                     <Image
-                      src={service.image}
+                      src={getImagePath(service.image)}
                       alt={service.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

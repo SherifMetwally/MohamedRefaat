@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { getImagePath } from '@/lib/paths';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -45,7 +46,7 @@ export default function Navigation() {
               {/* Main Logo */}
               <div className="relative h-8 sm:h-10 md:h-12">
                 <Image
-                  src="/images/logo.avif"
+                  src={getImagePath('/images/logo.avif')}
                   alt="Mohamed Refaat Designs - Interior Design & Architecture"
                   width={200}
                   height={48}
