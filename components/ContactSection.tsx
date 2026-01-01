@@ -98,7 +98,7 @@ export default function ContactSection() {
             <p className="text-gray-300 font-medium">
             5th Settlement Branch, Cairo 
             </p>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-300 font-medium">
               Saba basha Branch, Alexandria
             </p>
           </div>
