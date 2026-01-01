@@ -248,7 +248,7 @@ export default function ContactPage() {
               <div>
                 <h3 className="text-2xl font-bold text-white mb-4">Our Branches</h3>
                 <div className="space-y-3 text-gray-300">
-                  <p>5th settlement, Al Narges 5, villa 188</p>
+                  <p>5th Settlement Branch, Cairo</p>
                   <p>Saba basha Branch, Alexandria</p>
                 </div>
               </div>

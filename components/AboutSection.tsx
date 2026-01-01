@@ -144,7 +144,7 @@ export default function AboutSection({ showKnowMoreButton = true }: AboutSection
                 className="mt-8 pt-8 border-t border-gray-800"
               >
                 <motion.a
-                  href="https://www.instagram.com/mohamedrefaat.mr/"
+                  href="https://www.instagram.com/mohamedrefaat.designs"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: 5 }}

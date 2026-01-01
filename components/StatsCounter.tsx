@@ -96,12 +96,13 @@ export default function StatsCounter() {
           className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
         >
           <Counter
-            end={25}
+            end={500}
             duration={3.5}
+            prefix="+"
             label="Happy Clients"
           />
           <Counter
-            end={50}
+            end={500}
             duration={4}
             prefix="+"
             label="Completed Projects"
