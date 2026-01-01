@@ -11,7 +11,7 @@ const services = [
   {
     title: 'Commercial',
     description: 'Creating inspiring spaces that elevate business performance and customer experience',
-    image: '/images/commercial.avif',
+    image: '/images/commercial.jpg',
   },
   {
     title: 'Villa Exterior',
@@ -21,7 +21,7 @@ const services = [
   {
     title: 'Residential Projects',
     description: 'Delivering complete housing solutions with precision and creativity',
-    image: '/images/residential-project.avif',
+    image: '/images/residential-project.jpg',
   },
   {
     title: 'Landscape & Exterior',
@@ -31,7 +31,7 @@ const services = [
   {
     title: 'Residential',
     description: 'Designing homes that reflect your lifestyle with elegance and comfort',
-    image: '/images/residential.avif',
+    image: '/images/residential.jpg',
   },
   {
     title: 'Interior Design Art',

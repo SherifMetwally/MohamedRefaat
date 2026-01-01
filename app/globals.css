@@ -28,14 +28,14 @@
     background-color: #000000;
     background-image: 
       /* Main grid - architectural blueprint style - subtle */
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      /* Secondary grid - smaller divisions */
       linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      /* Secondary grid - smaller divisions */
-      linear-gradient(rgba(255, 255, 255, 0.015) 0.5px, transparent 0.5px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 0.5px, transparent 0.5px),
       /* Diagonal architectural lines */
-      linear-gradient(45deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(45deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(-45deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     background-size: 
       120px 120px,
       120px 120px,
