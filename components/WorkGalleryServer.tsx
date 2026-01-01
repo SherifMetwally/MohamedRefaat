@@ -2,7 +2,7 @@ import { getAllProjects, getHomeProjects, scanProjects, Project } from '@/lib/pr
 import WorkGalleryClient from './WorkGalleryClient';
 
 interface WorkGalleryServerProps {
-  source?: 'home' | 'all';
+  source?: 'home' | 'all' | 'our';
   showCategories?: boolean;
 }
 
