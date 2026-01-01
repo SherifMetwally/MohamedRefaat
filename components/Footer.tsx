@@ -35,7 +35,7 @@ export default function Footer() {
               className="text-gray-400 text-sm"
               whileHover={{ scale: 1.05 }}
             >
-              Developed by{' '}
+              WebsiteDeveloped by{' '}
               <motion.a
                 href="https://linkedin.com/in/sherifmetwally"
                 target="_blank"
