@@ -1,11 +1,10 @@
-import Link from 'next/link';
-import { getProjectBySlug, projects } from '@/lib/projects';
-import ProjectClient from './ProjectClient';
 import ProjectPageClient from './ProjectPageClient';
+import { getAllProjects, getProjectBySlug } from '@/lib/projectScanner';
 
 // Generate static params for static export
 export function generateStaticParams() {
   try {
+    const projects = getAllProjects();
     return projects.map((project) => ({
       slug: project.slug,
     }));
@@ -16,14 +15,15 @@ export function generateStaticParams() {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function ProjectPage({ params }: PageProps) {
-  // For static export, params might not be available at runtime
-  // Use client-side component to extract slug from URL
-  return <ProjectPageClient serverParams={params} />;
+export default async function ProjectPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  
+  return <ProjectPageClient project={project} slug={slug} />;
 }
 

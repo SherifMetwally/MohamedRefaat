@@ -44,7 +44,7 @@ export default function Navigation() {
               className="relative flex items-center"
             >
               {/* Main Logo */}
-              <div className="relative h-12 sm:h-14 md:h-16 lg:h-20">
+              <div className="relative h-16 sm:h-20 md:h-24 lg:h-28">
                 <Image
                   src={getImagePath('/images/logo.avif')}
                   alt="Mohamed Refaat Designs - Interior Design & Architecture"

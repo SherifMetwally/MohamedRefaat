@@ -1,52 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { getProjectBySlug, Project } from '@/lib/projects';
+import { Project } from '@/lib/projectScanner';
 import ProjectClient from './ProjectClient';
 
 interface ProjectPageClientProps {
-  serverParams?: {
-    slug?: string;
-  };
+  project: Project | undefined;
+  slug: string;
 }
 
-export default function ProjectPageClient({ serverParams }: ProjectPageClientProps) {
-  const pathname = usePathname();
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Try to get slug from server params first, then from URL
-    let slug: string | null = null;
-    
-    if (serverParams?.slug) {
-      slug = String(serverParams.slug).replace(/\/$/, '').trim();
-    } else {
-      // Extract slug from pathname
-      const match = pathname.match(/\/work\/([^\/]+)/);
-      if (match) {
-        slug = match[1].replace(/\/$/, '').trim();
-      }
-    }
-    
-    if (slug) {
-      const foundProject = getProjectBySlug(slug);
-      setProject(foundProject || null);
-    }
-    setLoading(false);
-  }, [pathname, serverParams]);
-
-  if (loading) {
-    return (
-      <div className="pt-20 min-h-screen flex items-center justify-center">
-        <div className="text-center px-4">
-          <p className="text-gray-400">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+export default function ProjectPageClient({ project, slug }: ProjectPageClientProps) {
 
   if (!project) {
     return (

@@ -10,43 +10,87 @@ const services = ['Interior', 'Exterior', 'Architecture', 'Services'];
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Mobile-specific background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 lg:hidden pointer-events-none z-0" />
+      
       <div className="max-w-7xl mx-auto w-full relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Text Content - Left Side */}
-          <div className="lg:col-span-7 text-center lg:text-left relative z-10">
+          <div className="lg:col-span-7 text-center lg:text-left relative z-10 order-2 lg:order-1">
             <motion.h1
               {...fadeInUp}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-2 leading-tight"
             >
-              Mohamed Refaat
+              <span className="inline-block lg:inline">Mohamed</span>{' '}
+              <span className="inline-block lg:inline bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent animate-pulse">
+                Refaat
+              </span>
             </motion.h1>
             <motion.h2
               initial={fadeInUp.initial}
               animate={fadeInUp.animate}
               transition={{ ...fadeInUp.transition, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white mb-8 block"
             >
               Designs
             </motion.h2>
 
-            {/* Services List */}
+            {/* Services List - Modern Card Design */}
             <motion.div
               variants={staggerContainer}
               initial="initial"
               animate="animate"
-              className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8"
+              className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start mb-8"
             >
               {services.map((service, index) => (
                 <motion.div
                   key={service}
                   variants={fadeInUp}
                   transition={{ delay: 0.2 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="px-6 py-3 border border-gray-700 rounded-lg bg-gray-900/50 backdrop-blur-sm hover:border-gray-500 hover:bg-gray-800/50 transition-all duration-300 cursor-default"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -4,
+                    rotateX: 5
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/80 backdrop-blur-md border border-gray-700/50 hover:border-gray-500/80 transition-all duration-300 cursor-default shadow-lg hover:shadow-xl hover:shadow-white/10"
                 >
-                  <span className="text-lg sm:text-xl font-medium text-white">
-                    {service}
-                  </span>
+                  {/* Animated gradient overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '100%' }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  
+                  {/* Content */}
+                  <div className="relative px-5 py-3.5 sm:px-6 sm:py-4">
+                    <motion.span 
+                      className="text-base sm:text-lg font-semibold text-white relative z-10 block"
+                      animate={{
+                        textShadow: [
+                          "0 0 0px rgba(255,255,255,0)",
+                          "0 0 8px rgba(255,255,255,0.2)",
+                          "0 0 0px rgba(255,255,255,0)"
+                        ]
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        delay: index * 0.4
+                      }}
+                    >
+                      {service}
+                    </motion.span>
+                  </div>
+                  
+                  {/* Bottom accent line */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                    initial={{ width: '0%' }}
+                    whileHover={{ width: '100%' }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </motion.div>
               ))}
             </motion.div>
@@ -82,7 +126,7 @@ export default function Hero() {
               stiffness: 50,
               damping: 15
             }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5 relative order-1 lg:order-2 mb-8 lg:mb-0"
           >
             {/* Decorative Elements */}
             <motion.div
@@ -100,16 +144,27 @@ export default function Hero() {
             
             {/* Main Image Container */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ 
+                opacity: 1, 
+                y: [0, -10, 0] // Mobile floating animation
+              }}
+              transition={{ 
+                opacity: { delay: 0.6, duration: 0.6 },
+                y: {
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.2
+                }
+              }}
               whileHover={{ 
                 scale: 1.03, 
                 rotateY: 5,
                 rotateX: 2,
                 transition: { duration: 0.3 }
               }}
-              className="relative w-full max-w-sm mx-auto aspect-[3/4]"
+              className="relative w-full max-w-sm mx-auto aspect-[3/4] lg:aspect-[3/4]"
             >
               {/* Logo Emblem Background - Large and Overlay */}
               <motion.div
@@ -150,10 +205,26 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
-                className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-gray-700 shadow-2xl"
+                className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-gray-700 shadow-2xl lg:shadow-2xl"
                 style={{ zIndex: 20, position: 'relative' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800/30 to-transparent z-10 pointer-events-none" />
+                {/* Enhanced mobile gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800/30 via-transparent to-gray-900/50 z-10 pointer-events-none lg:from-gray-800/30 lg:to-transparent" />
+                
+                {/* Mobile-specific glow effect */}
+                <motion.div
+                  className="lg:hidden absolute -inset-4 bg-gradient-to-r from-white/10 via-transparent to-white/10 rounded-3xl blur-2xl"
+                  animate={{
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  style={{ zIndex: -1 }}
+                />
+                
                 <Image
                   src={getImagePath('/images/hero-image.jpg')}
                   alt="Eng. Mohamed Refaat - Architect and Interior Designer"
