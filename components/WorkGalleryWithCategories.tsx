@@ -286,10 +286,10 @@ export default function WorkGalleryWithCategories({
                 </Link>
 
                 {/* Categories Accordion - Only show on individual project pages, not in listing */}
-                {false && showCategories && project.categories && project.categories.length > 0 && (
+                {false && showCategories && project.categories && (project.categories?.length ?? 0) > 0 && (
                   <div className="p-4 border-t border-gray-800">
                     <div className="space-y-2">
-                      {project.categories.map((category) => {
+                      {project.categories?.map((category) => {
                         const isCategoryExpanded = expandedCategories[project.id]?.has(category.name);
                         
                         return (
