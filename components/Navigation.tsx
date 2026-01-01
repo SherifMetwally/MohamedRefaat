@@ -46,7 +46,7 @@ export default function Navigation() {
               {/* Main Logo */}
               <div className="relative h-16 sm:h-20 md:h-24 lg:h-28">
                 <Image
-                  src={getImagePath('/images/logo.png')}
+                  src={getImagePath('/images/logo.PNG')}
                   alt="Mohamed Refaat Designs - Interior Design & Architecture"
                   width={300}
                   height={80}
