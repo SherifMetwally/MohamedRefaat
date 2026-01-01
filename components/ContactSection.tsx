@@ -49,10 +49,10 @@ export default function ContactSection() {
                 +201019992810
               </a>
               <a
-                href="tel:+201225525255"
+                href="tel:+201200568885"
                 className="block hover:text-white transition-colors"
               >
-                +201225525255
+                +201200568885
               </a>
               <a
                 href="mailto:info@mrd-eg.com"
