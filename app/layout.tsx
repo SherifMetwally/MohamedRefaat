@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { LoadingProvider } from '@/components/LoadingProvider';
 import { basePath } from '@/lib/paths';
 
 export const metadata: Metadata = {
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="relative">
-        <Navigation />
-        <main className="relative z-10">{children}</main>
-        <Footer />
+        <LoadingProvider>
+          <Navigation />
+          <main className="relative z-10">{children}</main>
+          <Footer />
+        </LoadingProvider>
       </body>
     </html>
   );

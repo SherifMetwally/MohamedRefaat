@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import Link from 'next/link';
+import LoadingLink from './LoadingLink';
 import { useState, useEffect } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { getImagePath } from '@/lib/paths';
@@ -209,7 +210,7 @@ export default function WorkGallery({ projects = [], showMoreButton = false }: W
             }
 
             return (
-              <Link
+              <LoadingLink
                 key={project.id}
                 href={`/work/${project.slug}`}
                 className="block"
@@ -261,7 +262,7 @@ export default function WorkGallery({ projects = [], showMoreButton = false }: W
                     </div>
                   </div>
                 </div>
-              </Link>
+              </LoadingLink>
             );
           })}
         </div>

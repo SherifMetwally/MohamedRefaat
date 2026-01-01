@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import Link from 'next/link';
+import LoadingLink from './LoadingLink';
 import { useState, useEffect } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { getImagePath } from '@/lib/paths';
@@ -237,7 +238,7 @@ export default function WorkGalleryWithCategories({
                 className="border border-gray-800 rounded-lg bg-gray-900/30 overflow-hidden"
               >
                 {/* Main Project Card */}
-                <Link href={`/work/${project.slug}`} className="block">
+                <LoadingLink href={`/work/${project.slug}`} className="block">
                   <div
                     className="relative aspect-[4/3] overflow-hidden group cursor-pointer bg-gray-900 hover:scale-[1.01] transition-transform duration-300"
                     onMouseEnter={() => handleMouseEnter(project.id)}
@@ -283,7 +284,7 @@ export default function WorkGalleryWithCategories({
                       </div>
                     </div>
                   </div>
-                </Link>
+                </LoadingLink>
 
                 {/* Categories Accordion - Only show on individual project pages, not in listing */}
                 {false && showCategories && project.categories && (project.categories?.length ?? 0) > 0 && (
